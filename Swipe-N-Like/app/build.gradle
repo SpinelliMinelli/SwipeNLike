@@ -1,0 +1,120 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace "com.mobiledev.swipedb"
+    buildFeatures {
+        viewBinding true
+    }
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.mobiledev.swipedb"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/INDEX.LIST', 'META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt']
+        }
+    }
+
+}
+
+dependencies {
+
+    // Core AndroidX libraries
+    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+
+    // Groovy (Needed for compatibility with some plugins)
+    implementation 'org.codehaus.groovy:groovy:3.0.24'
+
+    // RecyclerView (Used for lists and scrollable content)
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+
+    // CardView (Used for card-based UI elements)
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // Lifecycle components (ViewModel, LiveData, etc.)
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
+
+    // Networking (Retrofit + OkHttp + Gson for API calls)
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+    implementation 'com.google.code.gson:gson:2.12.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.11.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+
+    // Image Loading (Glide - Used for handling images efficiently)
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    kapt 'com.github.bumptech.glide:compiler:4.16.0'
+
+    // Dependency Injection (Hilt - Used for managing dependencies)
+    implementation 'com.google.dagger:hilt-android:2.55'
+    kapt 'com.google.dagger:hilt-compiler:2.55'
+
+    // Kotlin Coroutines (Used for asynchronous tasks)
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.1.10'
+
+    // Jetpack Navigation Components (Used for handling navigation in the app)
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.8'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.8'
+
+    // Room Database (For local data storage)
+    implementation 'androidx.room:room-runtime:2.6.1'
+    kapt 'androidx.room:room-compiler:2.6.1'
+    implementation 'androidx.room:room-ktx:2.6.1'
+
+    // Rounded ImageView (Used for circular/rounded images)
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    // Swiping library (Used for Tinder-style card swiping)
+    implementation 'com.github.yuyakaido:CardStackView:2.3.4'
+
+
+    // Testing dependencies
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}
+
+// Dependency resolution strategy (Forcing a specific version of CardStackView)
+configurations.all {
+    resolutionStrategy {
+        force 'com.github.yuyakaido:CardStackView:2.3.4'
+    }
+}

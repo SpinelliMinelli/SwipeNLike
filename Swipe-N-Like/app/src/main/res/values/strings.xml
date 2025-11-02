@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Swipe-n-Like</string>
+    <string name="search">Search</string>
+    <string name="search_and_swipe">Search/Swipe</string>
+    <string name="my_likes">My Likes</string>
+    <string name="search_term">Search Term</string>
+</resources>

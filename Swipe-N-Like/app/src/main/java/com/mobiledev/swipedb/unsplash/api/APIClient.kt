@@ -1,5 +1,6 @@
 package com.mobiledev.swipedb.unsplash.api
 
+import com.mobiledev.swipedb.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,8 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object APIClient {
 
     private const val BASE_URL = "https://api.unsplash.com/"
-    private const val ACCESS_KEY = "Client-ID NCuOLHuGJZFCKKPu1PLtXuV1gjb3utYtf8rtTeG_HDw"
-
+    private const val ACCESS_KEY = BuildConfig.UNSPLASH_ACCESS_KEY
 
     private val authInterceptor = Interceptor { chain ->
         val request = chain.request().newBuilder()
